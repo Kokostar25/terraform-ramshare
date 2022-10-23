@@ -20,22 +20,14 @@ variable "resources" {
     
     default = [{
         name = "subnet_a"
-        resource_arn = "arn:aws:ec2:us-east-1:834392685431:subnet/subnet-01f56be65457e3ef8"
+        resource_arn = "arn:aws:ec2:us-east-1:xxxxxxx:subnet/subnet-01f56be65457e3ef8"
     },
   {
     name = "subnet_b"
-    resource_arn = "arn:aws:ec2:us-east-1:834392685431:subnet/subnet-020b089f99b32657c"
+    resource_arn = "arn:aws:ec2:us-east-1:xxxxxxxx:subnet/subnet-020b089f99b32657c"
   }]
 
 }
-
-// variable "resources" {
-//   description = "Schema list of resources to associate to the resource share"
-//   type = list(string)
-//   default = ["arn:aws:ec2:us-east-1:834392685431:subnet/subnet-01f56be65457e3ef8", 
-//   arn:aws:ec2:us-east-1:834392685431:subnet/subnet-020b089f99b32657c"]
-
-// }
 
 variable "tags" {
   description = "Map of tags to assign to the resource share"

@@ -21,11 +21,16 @@ resource "aws_ram_resource_share" "demo" {
 
 resource "aws_ram_resource_association" "assos" {
   provider = aws.adminmaster  
-  count = length(var.resources)
-  resource_arn       = var.resources[count.index] # ARN resource you want to associate with the RAM resource share 
+  for_each = { for resource in var.resources : resource.name => resource }
+  resource_arn       = each.value.resource_arn # ARN resource you want to associate with the RAM resource share 
   resource_share_arn = aws_ram_resource_share.demo.arn         # ARN of the RAM resource share 
 }
-
+// resource "aws_ram_resource_association" "assos" {
+//   provider = aws.adminmaster  
+//   count = length(var.resources)
+//   resource_arn       = var.resources[count.index] # ARN resource you want to associate with the RAM resource share 
+//   resource_share_arn = aws_ram_resource_share.demo.arn         # ARN of the RAM resource share 
+// }
 
 resource "aws_ram_principal_association" "something" {
   provider = aws.adminmaster  
